@@ -8,7 +8,7 @@ int main()
 
 	while (true)
 	{
-		std::cout << "0이 아닌 숫자를 입력하세요(첫 번째): ";
+		std::cout << "0이 아닌 숫자를 입력하세요.(첫 번째): ";
 
 		std::cin >> buffer;
 
