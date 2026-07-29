@@ -1,12 +1,14 @@
 ﻿#include <iostream>
 #include <array>
 
+//https://learn.microsoft.com/ko-kr/cpp/c-runtime-library/find-memory-leaks-using-the-crt-library?view=msvc-170
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
 
 #ifdef _DEBUG
-#define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) // DBG_NEW -> new 통제 가능하기 때문에 상관 없지만,
+														// 프로젝트가 커지면 문제. 바꾸지 않는 것을 권장.
 // Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
 // allocations to be of _CLIENT_BLOCK type
 #else

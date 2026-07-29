@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <string>
+//#include <Windows.h>
 
 
 // 클래스.
@@ -41,8 +43,8 @@ public:
 
 private:
 	// 이름을 저장할 변수.
-	char* name = nullptr;
-
+	char* name = nullptr; 
+	//char nickName[16] = {};
 };
 
 
@@ -64,6 +66,24 @@ int main()
 
 
 	size_t length=strlen(name);
+	
+	// Windows 타입.
+	//WCHAR 
+
+
+	// Wide Character.
+	const wchar_t* wcName = L"KHJ";
+
+	// STL 문자열 타입.
+	std::string nameString = "Kang Hyeongjin";
+	std::cout << nameString << "\n";
+	std::cout << "nameString Length: " << nameString.size() << '\n';
+	//std::wstring
+
+
+	// std::string 을 C-Raw string 으로.
+	const char* rawName=nameString.c_str();
+
 	std::cout << "string length: " << length << "\n";
 
 	std::cin.get();
