@@ -9,8 +9,21 @@ void Release(int** t)
 	}
 }
 
+// 두 변수의 값을 서로 교환하는 함수.
+void swap(int* const a, int* const b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
 int main()
 {
+	// 두 수를 교환.
+	int numberA = 10;
+	int numberB = 20;
+	swap(&numberA, &numberB);
+
 	int var = 8;
 	int* ptr = &var;
 
