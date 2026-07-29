@@ -10,11 +10,19 @@ void Release(int** t)
 }
 
 // 두 변수의 값을 서로 교환하는 함수.
-void swap(int* const a, int* const b)
+void Swap(int* const a, int* const b)
 {
 	int temp = *a;
 	*a = *b;
 	*b = temp;
+}
+
+// 레퍼런스를 활용한 swap 함수.
+void SwapRef(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
 }
 
 int main()
@@ -22,7 +30,8 @@ int main()
 	// 두 수를 교환.
 	int numberA = 10;
 	int numberB = 20;
-	swap(&numberA, &numberB);
+	//Swap(&numberA, &numberB);
+	SwapRef(numberA, numberB);
 
 	int var = 8;
 	int* ptr = &var;
