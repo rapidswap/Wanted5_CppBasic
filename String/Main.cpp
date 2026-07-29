@@ -34,7 +34,7 @@ public:
 	}
 
 	// 이름 출력.
-	void PrintName() const
+	void PrintName() const // const는 객체멤버 변수를 바꾸지 않겠다를 의미. (보통 출력 조회)
 	{
 		std::cout << name << '\n';
 	}
