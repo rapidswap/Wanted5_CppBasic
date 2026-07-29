@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 
 void Release(int** t)
 {
@@ -53,3 +53,7 @@ int main()
 
 	std::cin.get();
 }
+
+//함수 매개변수 int* a 일때 const int* a(읽기만 가능하게 즉, 값이 변하면 안될떄) 
+//int* const a일떄(주소를 변경하고 싶지 않을때) 사용
+//참조는 int& const a(이미 값의 주소를 바꾸지 못하기 떄문에 써도 의미없음)
