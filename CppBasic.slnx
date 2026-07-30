@@ -5,6 +5,7 @@
   <Project Path="Array/Array.vcxproj" Id="0e596678-f92a-4b5b-aad0-9bdc83399130" />
   <Project Path="BuildProcess/BuildProcess.vcxproj" Id="965a7173-29b1-4310-a065-d49f23c4bf6b" />
   <Project Path="Class/Class.vcxproj" Id="4fb95b69-f31d-4946-9e24-7c48d9433322" />
+  <Project Path="ClassInheritance/ClassInheritance.vcxproj" Id="6f8ef11b-5c20-422e-8b0a-0318e38c42c0" />
   <Project Path="ConsoleInput/ConsoleInput.vcxproj" Id="180c70e2-ff19-4945-8d9d-7b9c48caa1f1" />
   <Project Path="ConsoleIO/ConsoleIO.vcxproj" Id="c8812dd9-fa79-4fc0-988f-9db5cef89e4b" />
   <Project Path="CopyConstructor/CopyConstructor.vcxproj" Id="1d193c43-0708-4bd7-911b-6246f298ce2d" />
