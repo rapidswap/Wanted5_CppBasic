@@ -14,5 +14,6 @@
   <Project Path="Pointer/Pointer.vcxproj" Id="aa63964a-52e8-4db9-9b20-c138cde8b933" />
   <Project Path="Static/Static.vcxproj" Id="2a93d286-788d-4f94-9ccc-d26bc4b6c7f8" />
   <Project Path="String/String.vcxproj" Id="47b07896-dc09-4068-a8db-bd4f425e377a" />
+  <Project Path="Template/Template.vcxproj" Id="616ceb22-870b-43fe-8b6a-fdd3bc49a286" />
   <Project Path="Virtual/Virtual.vcxproj" Id="29e0ed1a-ca52-47a7-80d3-4900fa0f9539" />
 </Solution>

@@ -1,8 +1,9 @@
-﻿#include <iostream>
+﻿#pragma once
+
+#include <iostream>
 #include "File1.h"
 #include "File2.h"
 #include "Person.h"
-
 
 void Increment()
 {
@@ -11,7 +12,7 @@ void Increment()
 	std::cout << "Count: " << count << "\n";
 }
 
-#pragma once
+
 
 // 현재 존재하는 person 객체의 수.
 //int personCount = 0;
@@ -32,7 +33,7 @@ public:
 
 private:
 	static int personCount;
-	//inline static int personCount;
+	//inline static int personCount = 0;
 };
 
 // static 변수는 별도로 초기화 해야함.
