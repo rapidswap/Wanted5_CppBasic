@@ -11,7 +11,7 @@ public:
 	virtual size_t GetType() const = 0;
 
 	// 타입 비교 함수.
-	// CraftObject의 함수를 호출했다느 건 타입이 다른 것과 같음.
+	// CraftObject의 함수를 호출했다는 건 타입이 다른 것과 같음.
 	virtual bool Is(size_t id) const
 	{
 		return false;
@@ -48,7 +48,7 @@ std::shared_ptr<T> Cast(const std::shared_ptr<U>& object)
 	return nullptr;
 }
 
-// 타입 시스템에 제공할 함수르 매크로로 구현
+// 타입 시스템에 제공할 함수를 매크로로 구현
 #define TYPE_DECLARATIONS(Type, ParentType)							\
 	using super=ParentType;											\
 protected:															\
