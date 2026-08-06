@@ -2,7 +2,8 @@
 #include <iostream>
 #include <cassert>
 
-int main()
+// Config 파일 생성 함수.
+void CreateConfigFile(const char* filename)
 {
 	// 문자열 쓰기.
 	float framerate = 120.0f;
@@ -17,22 +18,82 @@ int main()
 	sprintf_s(
 		string, length,
 		"framerate = %f\nwidth = %d\nheight = %d",
-		framerate,width,height
+		framerate, width, height
 	);
 
+	// 메모리의 어떤 데이터를 서식을 지정해서 파일에 기록하느 기능.
+	// -> 직렬화(Serialization).
+	// 이 동작을 거꾸로 하는 것이 역직렬화(Deserialization).
+	// File -> Memory.
+
 	FILE* configFile = nullptr;
-	fopen_s(&configFile, "Setting.txt","wt");
+	fopen_s(&configFile, filename, "wt");
 
 	if (!configFile)
 	{
-		return 1;
+		return;
 	}
 
 	fwrite(string, sizeof(char), strlen(string) + 1, configFile);
 
 	fclose(configFile);
 	configFile = nullptr;
+}
 
+int main()
+{
+	const char* configFileName = "Setting.txt";
+	//CreateConfigFile(configFileName);
+	
+	// 설정 파일 읽기.
+	// 파일 로드 -> 읽은 값을 변수로 저장.
+	FILE* configFile = nullptr;
+	fopen_s(&configFile, configFileName, "rt");
+	if (!configFile)
+	{
+		return 1;
+	}
+
+	// 파일에서 읽은 데이터를 저장할 공간.
+	// 동적 할당 (정확한 크기 지정).
+
+	// 파일 끝 위치로 이동 (FP 이동).
+	fseek(configFile, 0, SEEK_END);
+	
+	// FP가 가리키는 위치 반환.
+	int fileSize = static_cast<int>(ftell(configFile));
+	
+	// 위치 값을 읽고난 후에 다시 파일을 다루기 위해 첫 위치로 이동.
+	fseek(configFile, 0, SEEK_SET);
+	//rewind(configFile);
+
+	// 버퍼 생성.
+	char* configData = new char[fileSize];
+	// 생성한 저장소의 값 초기화.
+	memset(configData, 0, sizeof(char)*fileSize);
+
+	size_t configReadSize = fread(configData, sizeof(char), fileSize, configFile);
+
+	// 서식을 지정해서 문자열에서 값 읽기.
+	float framerate = 0.0f;
+	int width = 0;
+	int height = 0;
+
+	sscanf_s(
+		configData,
+		"framerate = %f\nwidth = %d\nheight = %d",
+		&framerate, &width, &height
+	);
+
+	// 다 사용한 버퍼 해제.
+	delete[] configData;
+	configData = nullptr;
+
+	// 파일 닫기.
+	fclose(configFile);
+	configFile = nullptr;
+
+	// 파일 입출력을 위한 변수.
 	FILE* file = nullptr;
 
 	auto result = fopen_s(&file, "Test.txt", "rt");
