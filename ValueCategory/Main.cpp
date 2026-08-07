@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 
 class Actor
@@ -64,11 +64,53 @@ public:
 private:
 	char* name=nullptr;
 };
-int main()
+
+// 함수 오버로딩 (같은 이름의 함수가 여러개 배치되는 형태).
+void Use(int& value)
 {
-	std::string actor2Name = "name";
-	Actor actor1("Test");
-	Actor actor2(actor2Name);
+	std::cout << "void Use(int& value)\n";
+}
+
+void Use(int&& value)
+{
+	std::cout << "void Use(int&& value)\n";
+}
+
+class Item
+{
+
+};
+
+void Test(Item& item)
+{
+	std::cout << "void Test(Item& item)\n";
+}
+
+void Test(Item&& item)
+{
+	std::cout << "void Test(Item&& item)\n";
+}
+
+template<typename T>
+void Function(T&& value)
+{ 
+	Test(std::forward<T>(value));
+}
+
+int main() 
+{
+	int value = 10;
+	Use(value);
+	Use(std::move(value));
+
+	Item item;
+	Function(item);
+	Function(Item());
+
+
+	//std::string actor2Name = "name";
+	//Actor actor1("Test");
+	//Actor actor2(actor2Name);
 	// count 는 L-Value.
 	// L- value:
 	// - 메모리를 차지하고,
@@ -85,5 +127,7 @@ int main()
 
 	// R-Value Reference(R-Value 참조).
 	int&& rRef = 10;
+	rRef = 30;
 	//int&& rRef = count; // 오류
+	//int&& rRef2 = rRef; // 오류
 }
